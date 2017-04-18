@@ -48,6 +48,8 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
+    bulma-rails (0.4.0)
+      sass (~> 3.2)
     byebug (9.0.6)
     callsite (0.0.11)
     cancancan (1.15.0)
@@ -109,9 +111,6 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.5.3.2)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
     gherkin (4.1.1)
     git-version-bump (0.15.1)
     globalid (0.3.7)
@@ -263,6 +262,7 @@ DEPENDENCIES
   bcrypt (= 3.1.11)
   better_errors
   binding_of_caller (= 0.7.2)
+  bulma-rails (~> 0.4.0)
   byebug (= 9.0.6)
   cancancan (= 1.15.0)
   capybara
@@ -274,7 +274,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-sass-rails (= 3.0.2.2)
-  foundation-rails (= 5.5.3.2)
   hirb
   jbuilder (~> 2.0)
   jquery-rails
@@ -306,4 +305,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.11.2
+   1.14.5

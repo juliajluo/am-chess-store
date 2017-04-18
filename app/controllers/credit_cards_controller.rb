@@ -1,5 +1,5 @@
 class CreditCardsController < ApplicationController
-  # 
+  #
   # def index
   #   @active_items = Item.active.alphabetical.to_a
   # end

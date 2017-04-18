@@ -1,31 +1,20 @@
-<div class="contain-to-grid">
-  <nav class="top-bar" data-topbar role="navigation"> 
-    <section class="top-bar-section">
-      <ul class="left">
-        <!-- link to home -->
-        <li><%= link_to "Home", home_path %></li>
+<nav class="nav has-shadow">
+    <div class="nav-left">
+      <!-- <%= link_to image_tag('title2.png'), home_path, :class =>'nav-item' %> -->
+      <%= link_to "A+M Chess Store", home_path, :class => 'nav-item' %>
 
-        <!-- options for items -->
-        <li class="has-dropdown">
-          <%= link_to "Items", items_path %>
-          <ul class="dropdown">
-            <li><%= link_to "Item List", items_path %></li>
-            <li><%= link_to "Reorder List", home_path %></li>
-            <li><%= link_to "Add an Item", new_item_path %></li>
-          </ul>
-        </li>
+    </div>
 
-        <!-- options for purchases -->
-        <li>
-          <%= link_to "Purchases", purchases_path %>
-        </li>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
 
-        <!-- options for prices -->
-        <li>
-          <%= link_to "Prices", item_prices_path %>
-        </li>
-      </ul>
-
-    </section>
+    <div class="nav-right nav-menu">
+      <%= link_to "Items", items_path, :class => 'nav-item' %>
+      <%= link_to "Purchases", purchases_path, :class => 'nav-item' %>
+      <%= link_to "Prices", item_prices_path, :class => 'nav-item' %>
+      </a>
+    </div>
   </nav>
-</div>

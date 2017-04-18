@@ -1,26 +1,27 @@
 class OrdersController < ApplicationController
-  # def index
-  #   @active_items = Item.active.alphabetical.to_a
-  # end
-  #
-  # def new
-  #   @item_price = ItemPrice.new
-  # end
-  #
-  # def create
-  #   @item_price = ItemPrice.new(item_price_params)
-  #   @item_price.start_date = Date.current
-  #   if @item_price.save
-  #     @item = @item_price.item
-  #     redirect_to item_path(@item), notice: "Changed the price of #{@item.name}."
-  #   else
-  #     render action: 'new'
-  #   end
-  # end
-  #
-  # private
-  # def item_price_params
-  #   params.require(:item_price).permit(:item_id, :price, :category)
-  # end
+  def index
+    @all_orders= Order.all.chronological
+
+  end
+
+  def new
+    @order = Order.new
+  end
+
+  def create
+    @order = Order.new(order_params)
+    # @item_price.start_date = Date.current
+    order.date = Date.current
+    if @order.save
+      redirect_to orderpath(@order), notice: "Created #{@order}."
+    else
+      render action: 'new'
+    end
+  end
+
+  private
+  def item_price_params
+    params.require(:order).permit(:item_id, :price, :category)
+  end
 
 end
