@@ -1,4 +1,22 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "item_price", 
-                                                         primary: "current_item_prices", 
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Current Item Prices
+      </h1>
+      <%= link_to "add new", new_item_price_path, :class => "button is-primary"%>
+    </div>
+  </div>
+</section>
+
+<div class = "container">
+<div class = "section">
+
+
+<%= render partial: "partials/index_structure", locals: {model_name: "item_price",
+                                                         primary: "current_item_prices",
                                                          secondary: nil,
                                                          sidebar: nil} %>
+
+</div>
+</div>

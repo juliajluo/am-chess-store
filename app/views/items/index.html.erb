@@ -1,4 +1,29 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "item", 
-                                                         primary: "active_items", 
-                                                         secondary: nil,
-                                                         sidebar: "inactive_items"} %>
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Available Items
+      </h1>
+      <%= link_to "add new", new_item_path, :class => "button is-primary"%>
+    </div>
+  </div>
+</section>
+
+
+<div class = "container">
+<div class = "section">
+
+
+<% unless @boards.empty? && @pieces.empty? && @supplies.empty? && @clocks.empty? && @inactive_items.empty?%>
+  <%= render partial: 'item_table', locals: {title: 'Boards', items: @boards } unless @boards.empty? %>
+  <%= render partial: 'item_table', locals: {title: 'Pieces', items: @pieces} unless @pieces.empty? %>
+  <%= render partial: 'item_table', locals: {title: 'Supplies', items: @supplies} unless @supplies.empty? %>
+  <%= render partial: 'item_table', locals: {title: 'Clocks', items: @clocks} unless @clocks.empty? %>
+  <%= render partial: 'item_table', locals: {title: 'Inactive Items', items: @inactive_items} unless @inactive_items.empty? %>
+
+<%else%>
+  <%= flash[:notice] = "There are no items in the system at this time"%>
+<%end%>
+
+</div>
+</div>

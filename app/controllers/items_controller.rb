@@ -1,17 +1,23 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
   def index
     # get info on active items for the big three...
     @boards = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
     @pieces = Item.active.for_category('pieces').alphabetical.paginate(:page => params[:page]).per_page(10)
     @clocks = Item.active.for_category('clocks').alphabetical.paginate(:page => params[:page]).per_page(10)
-    @supplies = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)    
+    @supplies = Item.active.for_category('supplies').alphabetical.paginate(:page => params[:page]).per_page(10)
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.to_a
+
   end
 
   def show
+    @current_items = @item.active
+
+    @price = @item.item_prices
+
     # get the price history for this item
     @price_history = @item.item_prices.chronological.to_a
     # everyone sees similar items in the sidebar
@@ -27,7 +33,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    
+
     if @item.save
       redirect_to item_path(@item), notice: "Successfully created #{@item.name}."
     else
@@ -54,7 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :color, :category, :weight, :inventory_level, :reorder_level, :active)
+    params.require(:item).permit(:name, :description, :color, :category, :weight, :inventory_level, :reorder_level, :active, :photo)
   end
-  
+
 end

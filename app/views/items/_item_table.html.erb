@@ -1,0 +1,23 @@
+<h2 class ="subtitle"><%= title%></h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+      <th>Price</th>
+    <th>Inventory</th>
+  </tr>
+
+<% items.each do |item| %> 
+
+  <tr>
+    <td><%= link_to item.name, item_path(item) %></td>
+      <% unless item.current_price.nil? %>
+        <td><%= number_to_currency(item.current_price) %></td>
+      <%else%>
+    <td>N/A</td>
+      <%end%>
+    <td><%= item.inventory_level%></td>
+  </tr>
+
+<% end %>
+
+</table>
