@@ -1,0 +1,25 @@
+<%= @order_items %>
+
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+
+<% @order_items.each do |oi| %>
+
+  <tr>
+    <td><%= oi.item.name%></td>
+    <td>
+      price
+    </td>
+    <td><%= oi.quantity%></td>
+    <td><%= link_to 'Remove', remove_item_path, :class => 'button is-danger'%></td>
+  </tr>
+
+<% end %>
+
+</table>

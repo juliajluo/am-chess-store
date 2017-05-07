@@ -1,7 +1,8 @@
 <section class ="hero is-light">
   <div class ="hero-body">
     <div class = "container">
-      Items / <%= @item.name %>
+      <%= link_to "Items", items_path %>  / <%= @item.name %>
+
     </div>
   </div>
 </section>
@@ -11,7 +12,10 @@
   <div class="tile is-ancestor">
     <div class="tile is-4 is-parent">
       <figure class ='image'>
-        <%= image_tag 'comingsoon.png', :class =>'image' %>
+        <% unless @item.photo_url.nil? %>
+        <p><%= image_tag @item.photo_url%></p>
+        <% end %>
+
       </figure>
     </div>
 
@@ -24,6 +28,8 @@
               <%= link_to 'Edit', edit_item_path(@item), :class => 'button is-light' %>
               <%= link_to 'View All', items_path, :class => 'button is-light'  %>
               <%= link_to 'Destroy', @item, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger'  %>
+              <%= link_to 'Add to Cart', add_to_cart_path, :class => 'button is-light'  %>
+
         <br />
       </div>
     </div>
@@ -32,24 +38,26 @@
 
 <section class = "hero is-medium is-light">
   <div class = "hero-body">
-  <h2 class ="subtitle">Similar Items</h2>
-  <div class = "columns">
-    <% @similar_items.each do |si| %>
-      <div class ="column">
-      <div class="card">
-        <header class="card-header">
-          <%= link_to si.name, item_path(si), :class =>"card-header-title"%>
-        </header>
-      </div>
-      <div class = "card-image">
-        <figure class ='image'>
-          <%= image_tag 'comingsoon.png', :class =>'image' %>
-        </figure>
-      </div>
+  <div class = "container">
+    <h2 class ="subtitle">Similar Items</h2>
+    <div class = "columns">
+      <% @similar_items.each do |si| %>
 
+        <div class ="column">
+          <div class="card">
+            <div class = "card-image">
+              <figure class ='image'>
+                <%= image_tag si.photo_url%>
+              </figure>
+            </div>
+            <div class="card-content">
+              <%= link_to si.name, item_path(si), :class =>"card-header-title"%>
+            </div>
+          </div>
+
+      </div>
+      <%end%>
     </div>
-
-    <%end%>
   </div>
 </div>
 </section>

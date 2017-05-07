@@ -21,60 +21,37 @@
 
 
   <div class = "field">
-    <label class="label">Name</label>
+    <label class="label">First Name</label>
     <p class="control">
-      <%= f.text_field :name, :hint => "can't be blank", :class => "input" %>
+      <%= f.text_field :first_name, :hint => "can't be blank", :class => "input" %>
     </p>
   </div>
 
   <div class = "field">
-    <label class="label">Description</label>
+    <label class="label">Last Name</label>
     <p class="control">
-      <%= f.text_area :description, :class => "input" %>
+      <%= f.text_field :last_name, :hint => "can't be blank", :class => "input" %>
     </p>
   </div>
 
   <div class="field">
-    <label class="label">Category</label>
+    <label class="label">Role</label>
     <p class="control">
       <span class="select">
-        <%= f.select :category , Item::CATEGORIES %>
+        <%= f.select :category , User::ROLES %>
       </span>
     </p>
   </div>
 
   <div class = "field">
-    <label class="label">Color</label>
+    <label class="label">Email</label>
     <p class="control">
-      <%= f.text_field :color, :class => "input" %>
+      <%= f.text_field :email, :class => "input" %>
     </p>
   </div>
 
-  <div class = "field">
-    <label class="label">Weight</label>
-    <p class="control">
-      <%= f.text_field :weight, :class => "input" %>
-    </p>
-  </div>
 
-  <div class = "field">
-    <label class="label">Inventory level</label>
-    <p class="control">
-      <%= f.text_field :inventory_level, :class => "input" %>
-    </p>
-  </div>
 
-  <div class = "field">
-    <label class="label">Reorder Level</label>
-    <p class="control">
-      <%= f.text_field :reorder_level, :class => "input" %>
-    </p>
-  </div>
-
-  <div class = "field">
-    <%= f.label :photo %>
-    <%= f.file_field :photo %>
-  </div>
 
   <div class="actions">
     <%= f.submit class: 'button is-primary'%>

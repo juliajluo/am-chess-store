@@ -1,14 +1,54 @@
-<%= simple_form_for @purchase, html: { class: 'form-horizontal', multipart: true } do |f| %>
-  <fieldset>
-    <legend><%= controller.action_name.capitalize %> Purchase</legend>
 
-    <%= f.input :item_id, collection: Item.active.to_a, include_blank: true, input_html: {class: "avg"} %>
-    <%= f.input :quantity, input_html: {class: "avg"} %>
+<div class = "container">
+<div class = "section">
 
 
-    <div class="form-actions">
-      <%= f.submit nil, :class => 'button radius' %>
-      <%= link_to 'Cancel', purchases_path, :class => 'button alert radius' %>
-    </div>
-  </fieldset>
+<%= simple_form_for(@purchase,  html: { class: 'form-horizontal' }) do |f| %>
+
+
+    <% if @purchase.errors.any? %>
+      <article class="message is-warning">
+        <div class="message-header">
+          <p><%= pluralize(@purchase.errors.count, "error") %> found</p>
+          <button class="delete"></button>
+        </div>
+        <div class="message-body">
+          <ul>
+            <% @purchase.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </article>
+    <% end %>
+
+
+     <div class="field">
+       <label class="label">Items</label>
+       <p class="control">
+         <span class="select">
+           <%= f.collection_select(:item_id, Item.active.alphabetical, :id, :name)%>
+         </span>
+       </p>
+     </div>
+
+
+     <div class = "field">
+       <label class="label">Quantity</label>
+       <p class="control">
+         <%= f.text_field :quantity, :class => "input" %>
+       </p>
+     </div>
+
+
+
+  <div class="actions">
+    <%= f.submit class: 'button is-primary'%>
+    <%= link_to 'Cancel', items_path, :class => 'button is-link' %>
+  </div>
+
+
 <% end %>
+
+</div>
+</div>
