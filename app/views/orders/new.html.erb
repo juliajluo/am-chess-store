@@ -1,0 +1,62 @@
+
+<div class = "section">
+
+<%= simple_form_for @order, :html => { :multipart => true, :class => 'form-horizontal'} do |f| %>
+
+  <% if @order.errors.any? %>
+    <article class="message is-warning">
+      <div class="message-header">
+        <p><%= pluralize(@order.errors.count, "error") %> found</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+  <% end %>
+
+  <div class="field">
+    <label class="label">School</label>
+    <p class="control">
+      <span class="select">
+        <%= f.collection_select(:school_id, School.active.alphabetical, :id, :name)%>
+      </span>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Credit Card Number</label>
+    <p class="control">
+        <%= f.text_field :credit_card_number, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Expiration Year</label>
+    <p class="control">
+        <%= f.text_field :expiration_year, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Expiration Month</label>
+    <p class="control">
+        <%= f.text_field :expiration_month, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit class: 'button is-primary'%>
+    <%= link_to 'Cancel', viewcart_path, :class => 'button is-link' %>
+  </div>
+
+
+<% end %>
+
+</div>
