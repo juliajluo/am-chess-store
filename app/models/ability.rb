@@ -54,40 +54,34 @@ class Ability
 
     elsif user.role? :customer
       #read own personal info
-      can :show, User do |u|
-        u.id == user.id
-      end
-      #edit name, phone, email, and password
-      can :update, User do |u|
-        u.id ==user.id
-      end
-
+      # can :show, User do |u|
+      #   u.id == user.id
+      # end
+      # #edit name, phone, email, and password
+      # can :update, User do |u|
+      #   u.id ==user.id
+      # end
+      #
       #place new orders and cancel unshipped ones
       can :create, Order
       can :destroy, Order, Order.not_shipped #check!!!!
 
-      #can read info about items no inventory level or price history
-      can :read, Item do |i|
-        #display everything but
-      end
-
-      #can see a list of past orders and list of items of that past orders
-      # can :index, Order do |o|
-      #   o.user_id = user.id
-      # end
-
-      can :index,
+      #can read info about items no inventory level or price history DO IN THE VIEWS
+      # can :index, Item
 
       #can add schools
       can :create, School
 
 
     else
-      can :show, Item
-      #not inventory level and price history
-      can :create, User
-      can :index, Item
-      can :create, School
+      # can :show, Item
+      # #not inventory level and price history
+      # can :create, User
+      #
+      # can :index, Item
+      # can :create, School
+      can :manage, :all
+
 
 
     end

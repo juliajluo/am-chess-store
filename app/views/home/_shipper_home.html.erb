@@ -1,0 +1,23 @@
+<div class = "container">
+  <div class = "section">
+
+    <table class="table">
+      <tr>
+        <th>Order Number</th>
+        <th>School</th>
+        <th></th>
+      </tr>
+
+    <% notshipped.each do |order| %>
+
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.school_id %></td>
+        <td>checkmark goes here</td>
+      </tr>
+
+    <% end %>
+
+    </table>
+  </div>
+</div>

@@ -8,12 +8,12 @@ module Contexts
       @ben     = FactoryGirl.create(:user, first_name: "Ben", last_name: "Junker", username: "bjunker")
       @melanie = FactoryGirl.create(:user, first_name: "Melanie", last_name: "Freeman", username: "melfree", active: false)
     end
-    
+
     def destroy_customer_users
       @karen.delete
       @markv.delete
       @israel.delete
-      @ben.delete 
+      @ben.delete
       @melanie.delete
     end
 

@@ -1,16 +1,16 @@
 
 
-<%= simple_form_for @item_price, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @purchase, html: { class: 'form-horizontal' }, remote: true do |f| %>
 
-  <% if @item_price.errors.any? %>
+  <% if @purchase.errors.any? %>
     <article class="message is-warning">
       <div class="message-header">
-        <p><%= pluralize(@item_price.errors.count, "error") %> found</p>
+        <p><%= pluralize(@purchase.errors.count, "error") %> found</p>
         <button class="delete"></button>
       </div>
       <div class="message-body">
         <ul>
-          <% @item_price.errors.full_messages.each do |msg| %>
+          <% @purchase.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
           <% end %>
         </ul>
@@ -28,20 +28,14 @@
     </p>
   </div>
 
-  <div class="field">
-    <label class="label">Category</label>
-    <p class="control">
-      <span class="select">
-        <%= f.select :category, ItemPrice::CATEGORIES%>
-      </span>
-    </p>
-  </div>
 
-  <div class = "field">
-    <label class="label">Price</label>
-    <p class="control">
-      <%= f.text_field :price, :class => "input" %>
-    </p>
+  <div class="field is-horizontal">
+    <label class="label">Quantity</label>
+    <div class="field-body">
+        <div class="control">
+          <%= f.text_field :quantity, :class => "input" %>
+        </div>
+    </div>
   </div>
 
 

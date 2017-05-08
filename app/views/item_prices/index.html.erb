@@ -4,7 +4,9 @@
       <h1 class="title">
         Current Item Prices
       </h1>
-      <%= link_to "add new", new_item_price_path, :class => "button is-primary"%>
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <%= link_to "add new", new_item_price_path, :class => "button is-primary"%>
+      <%end%>
     </div>
   </div>
 </section>

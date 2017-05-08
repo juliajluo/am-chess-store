@@ -30,7 +30,10 @@
               <%= link_to 'Destroy', @item, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger'  %>
               <%= link_to 'Add to Cart', add_to_cart_path, :class => 'button is-light'  %>
 
+
         <br />
+
+
       </div>
     </div>
   </div>
@@ -54,10 +57,13 @@
               <%= link_to si.name, item_path(si), :class =>"card-header-title"%>
             </div>
           </div>
-
-      </div>
+        </div>
       <%end%>
     </div>
   </div>
 </div>
 </section>
+
+<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+  <%= render 'price_history_and_purchase'%>
+<%end%>

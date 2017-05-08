@@ -1,0 +1,21 @@
+<div id= "price_list">
+  <h2 class = "subtitle">Price History</h2>
+    <table class="table">
+      <tr>
+        <th>Price</th>
+        <th>Date</th>
+      </tr>
+
+    <% @price_history.each do |ph| %>
+
+      <tr>
+        <td><%= ph.price %></td>
+
+        <td> <%= ph.category%></td>
+
+      </tr>
+
+    <% end %>
+
+    </table>
+</div>

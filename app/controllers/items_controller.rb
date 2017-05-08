@@ -32,16 +32,20 @@ class ItemsController < ApplicationController
   end
 
   def create
+    authorize! :create, @item
     @item = Item.new(item_params)
 
     if @item.save
       redirect_to item_path(@item), notice: "Successfully created #{@item.name}."
+      format.json { render action: 'show', status: :created, location: @item }
+
     else
       render action: 'new'
     end
   end
 
   def update
+    authorize! :update, @item
     if @item.update(item_params)
       redirect_to item_path(@item), notice: "Successfully updated #{@item.name}."
     else
@@ -50,6 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @item
     @item.destroy
     redirect_to items_path, notice: "Successfully removed #{@item.name} from the system."
   end

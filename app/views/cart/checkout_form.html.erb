@@ -1,0 +1,87 @@
+
+<div class = "section">
+
+<%= simple_form_for @order, :html => { :multipart => true, :class => 'form-horizontal'} do |f| %>
+
+  <% if @item.errors.any? %>
+    <article class="message is-warning">
+      <div class="message-header">
+        <p><%= pluralize(@item.errors.count, "error") %> found</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+  <% end %>
+
+
+  <div class = "field">
+    <label class="label">Name</label>
+    <p class="control">
+      <%= f.text_field :name, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Description</label>
+    <p class="control">
+      <%= f.text_area :description, :class => "input" %>
+    </p>
+  </div>
+
+  <div class="field">
+    <label class="label">Category</label>
+    <p class="control">
+      <span class="select">
+        <%= f.select :category , Item::CATEGORIES %>
+      </span>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Color</label>
+    <p class="control">
+      <%= f.text_field :color, :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Weight</label>
+    <p class="control">
+      <%= f.text_field :weight, :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Inventory level</label>
+    <p class="control">
+      <%= f.text_field :inventory_level, :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Reorder Level</label>
+    <p class="control">
+      <%= f.text_field :reorder_level, :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'button is-primary'%>
+    <%= link_to 'Cancel', items_path, :class => 'button is-link' %>
+  </div>
+
+
+<% end %>
+
+</div>

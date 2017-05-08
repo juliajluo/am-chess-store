@@ -1,6 +1,6 @@
 
 
-<%= simple_form_for @item_price, html: { class: 'form-horizontal' } do |f| %>
+<%= simple_form_for @item_price, html: { class: 'form-horizontal' }, remote: true do |f| %>
 
   <% if @item_price.errors.any? %>
     <article class="message is-warning">
@@ -37,11 +37,13 @@
     </p>
   </div>
 
-  <div class = "field">
+  <div class="field is-horizontal">
     <label class="label">Price</label>
-    <p class="control">
-      <%= f.text_field :price, :class => "input" %>
-    </p>
+    <div class="field-body">
+        <div class="control">
+          <%= f.text_field :price, :class => "input" %>
+        </div>
+    </div>
   </div>
 
 

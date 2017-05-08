@@ -1,25 +1,37 @@
-<%= @order_items %>
+
+<div class = "container">
+<div class = "section">
+
+<h2 class = "subtitle">Your Cart</h2>
 
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th></th>
-  </tr>
+<% unless @order_items.empty?%>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+    </tr>
+  <% @order_items.each do |oi| %>
 
-<% @order_items.each do |oi| %>
+    <tr>
+      <td><%= oi.item.name%></td>
+      <td>
+        price
+      </td>
+      <td><%= oi.quantity%></td>
+      <td><%= link_to 'Remove', remove_item_path(oi.item_id), :class => 'button is-danger'%></td>
+    </tr>
+  <% end %>
+  </table>
+  <%= link_to 'Checkout', checkout_path, :class => 'button is-primary'%>
+  <%= link_to 'Clear', clear_path, :class => 'button is-light'%>
+<%else%>
+    <%= flash[:notice] = "There are no items in the cart at this time"%>
+<%end%>
 
-  <tr>
-    <td><%= oi.item.name%></td>
-    <td>
-      price
-    </td>
-    <td><%= oi.quantity%></td>
-    <td><%= link_to 'Remove', remove_item_path, :class => 'button is-danger'%></td>
-  </tr>
 
-<% end %>
 
-</table>
+</div>
+</div>

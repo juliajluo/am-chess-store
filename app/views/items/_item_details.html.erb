@@ -20,24 +20,14 @@
     <%= @item.description%>
 </p>
 
-<p>
-  <b>Inventory Level:</b>
-  <%= @item.inventory_level %>
-</p>
+<% unless current_user.nil? || current_user.role == 'customer'%>
+  <p>
+    <b>Inventory Level:</b>
+    <%= @item.inventory_level %>
+  </p>
+<%end%>
 
 <p>
   <b>Color:</b>
   <%= @item.color %>
-</p>
-
-<% unless @price_history.empty? %>
-  <p>
-    <b>Price History:</b>
-    <%= @price_history.map{|i| number_to_currency(i.price)}.join(" ")  %>
-  </p>
-<% end %>
-
-<p>
-  <b>Reorder Level: </b>
-  <%= @item.reorder_level %>
 </p>
