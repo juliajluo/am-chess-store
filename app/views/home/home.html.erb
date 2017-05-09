@@ -1,56 +1,13 @@
 
-<!-- <% render :partial => 'general_home' %> -->
+<%if current_user.nil?%>
+  <%= render :partial => 'general_home' %>
+<%end%>
+
+<%if logged_in? && current_user.role == "customer"%>
+  <%= render :partial => 'general_home' %>
+<%end%>
+
+<%if logged_in? && current_user.role == "shipper"%>
+<%= render 'shipper_home'%>
+<%end%>
 <!-- <%= render :partial => 'reorder_list' %> -->
-
-<%= render partial: 'partials/hero' %>
-
-
-<div class = "section">
-
-  <div class="columns">
-    <!-- <div class = "column is-1">
-    </div> -->
-    <div class = "column is-10 is-offset-1">
-      <div class = "columns">
-      <div class="column is-one-third">
-        <h1 class = "title">Customers Love Us</h1>
-        First column
-        <p>
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum h
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        </p>
-      </div>
-      <div class="column">
-        <h1 class = "title">Easy Shipping</h1>
-        Second column
-        <p>
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        </p>
-      </div>
-      <div class="column">
-        <h1 class = "title">Fast Response</h1>
-        <p>
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-          s simply dummy text of the printing and typesetting industry. Lorem Ipsum
-      </div>
-      </div>
-    </div>
-  </div>
-
-
-</div>
-
-<section class="hero is-medium is-light is-bold">
-<div class="hero-body">
-  <div class="container">
-    <h1 class="title">
-      Chess store history
-    </h1>
-    <h4 class="subtitle">
-      cute description here
-    </h4>
-  </div>
-</div>
-</section>

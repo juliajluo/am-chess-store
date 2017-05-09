@@ -18,6 +18,21 @@ class OrderItemsController < ApplicationController
   #   end
   # end
   #
+  def edit
+    authorize! :edit, @task
+# in case this is a quick complete...
+    if !params[:status].nil? && params[:status] == 'completed'
+      @task.completed = true
+      @task.completed_by = current_user.id
+      @task.save!
+      flash[:notice] = "#{@task.name} has been marked complete."
+      if params[:from] == 'project'
+        redirect_to project_path(@task.project)
+      else
+        redirect_to tasks_path
+      end
+    end
+  end
   # private
   # def item_price_params
   #   params.require(:item_price).permit(:item_id, :price, :category)

@@ -1,23 +1,48 @@
 <div class = "container">
   <div class = "section">
 
-    <table class="table">
-      <tr>
-        <th>Order Number</th>
-        <th>School</th>
-        <th></th>
-      </tr>
 
-    <% notshipped.each do |order| %>
+    <h2 class = "title">Orders to be shipped</h2>
+    <% @unshipped_orders.each do |order| %>
 
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.school_id %></td>
-        <td>checkmark goes here</td>
-      </tr>
+      <div class = "card">
+        <header class = "card-header">
+          <p class="card-header-title">
+            Order ID:<%= order.id%> &nbsp;&nbsp;&nbsp; <%= order.school.name%>
+          </p>
+        </header>
+        <div class = "card-content">
+          <table class = "table" id = "shipping_table">
+            <th>
+              Shipped?
+            </th>
+            <th>
+              Item
+            </th>
+            <th>
+              Quantity
+            </th>
+
+          <% order.order_items.each do |oi| %>
+            <tr>
+              <td><div class = "shipping_table_button">
+                <%= link_to 'Unshipped', items_path, :class => 'button is-light' %></td>
+              </div>
+              <td>
+                <%=oi.item.name%>
+              </td>
+              <td>
+                <%=oi.quantity%>
+              </td>
+            </tr>
+          <%end%>
+          </table>
+        </div>
+      </div>
 
     <% end %>
+    <!-- </table> -->
 
-    </table>
+
   </div>
 </div>

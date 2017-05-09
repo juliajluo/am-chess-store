@@ -45,7 +45,7 @@ class Ability
       end
 
       #can read info related to orders that need to be shipped
-      can :index, Order, Order.unshipped
+      # can :index, Order, Order.unshipped
 
       #can read info about items, but not price history
       can :read, Item do |this_item|
