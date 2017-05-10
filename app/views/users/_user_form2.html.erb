@@ -1,0 +1,89 @@
+
+<%= simple_form_for current_user, :html => { :multipart => true, :class => 'form-horizontal'} do |f| %>
+  <% if current_user.errors.any? %>
+    <article class="message is-warning">
+      <div class="message-header">
+        <p><%= pluralize(current_user.errors.count, "error") %> found</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% current_user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </article>
+  <% end %>
+
+
+  <div class = "field">
+    <label class="label">First Name</label>
+    <p class="control">
+      <%= f.text_field :first_name, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Last Name</label>
+    <p class="control">
+      <%= f.text_field :last_name, :hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+
+    <div class = "field">
+      <label class="label">Username</label>
+      <p class="control">
+        <%= f.text_field :username, :hint => "can't be blank", :class => "input" %>
+      </p>
+    </div>
+
+  <div class="field">
+    <label class="label">Role</label>
+    <p class="control">
+      <span class="select">
+        <%= f.select :role, User::ROLES %>
+      </span>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Email</label>
+    <p class="control">
+      <%= f.text_field :email,:hint => "can't be blank", :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Phone</label>
+    <p class="control">
+      <%= f.text_field :phone, :class => "input" %>
+    </p>
+  </div>
+
+  <div class = "field">
+    <label class="label">Password</label>
+    <p class="control">
+      <%= f.text_field :password, :class => "input" %>
+    </p>
+  </div>
+
+
+  <div class = "field">
+    <label class="label">Confirm Password</label>
+    <p class="control">
+      <%= f.text_field :password_confirmation, :class => "input" %>
+    </p>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= f.submit class: 'button is-primary'%>
+    <%= link_to 'Cancel', home_path, :class => 'button is-link' %>
+  </div>
+
+
+<% end %>

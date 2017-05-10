@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
 
     <title>Chess Warehouse :: <%= controller.controller_name.capitalize %></title>
     <%= stylesheet_link_tag "application" %>
@@ -23,9 +25,14 @@
     </div>
 
 
-    <footer>
-        <!-- <%= render partial: 'partials/footer' %> -->
-    </footer>
+      <!--FOOTER -->
+          <footer class="footer">
+            <div class="container">
+              <div class="content has-text-centered">
+                <%= render partial: 'partials/footer' %>
+              </div>
+            </div>
+          </footer>
 
 
     <%= javascript_include_tag "application" %>

@@ -1,0 +1,55 @@
+<div class = "container">
+  <div class = "section">
+    <div class = "columns">
+      <div class = "column is-6">
+        <p class = "title is-3">Welcome Back <%= current_user.first_name%> </p>
+
+        <p class = "subtitle is-5">
+          Unshipped Orders
+        </p>
+
+        <% current_user.orders.each do |o|%>
+          <div class = "card">
+            <header class= "card-header">
+              <p class="card-header-title">
+              Order ID: <%=o.id%> &nbsp;&nbsp;&nbsp; <%= o.school.name%></p>
+            </header>
+            <div class = "card-content">
+              <table class = "table">
+                <th>
+                  Item
+                </th>
+                <th>
+                  Quantity
+                </th>
+                <th>
+                  <%= link_to 'Cancel', o, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger' %>
+                </th>
+                <% o.order_items.each do |oi| %>
+                <tr>
+                  <td>
+                    <%= oi.item.name%>
+                  </td>
+                  <td>
+                    <%=oi.quantity%>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <%end%>
+              </table>
+            </div>
+          </div>
+        <%end%>
+
+
+
+
+      </div>
+      <div class = "column is-6">
+        <%= render 'user_form2'%>
+
+      </div>
+    </div>
+  </div>
+</div>

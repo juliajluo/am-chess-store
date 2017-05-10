@@ -1,4 +1,25 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "purchase", 
-                                                         primary: "recent_purchases", 
-                                                         secondary: nil,
-                                                         sidebar: nil} %>
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Purchases
+      </h1>
+      <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <%= link_to "add new", new_purchase_path, :class => "button is-primary"%>
+      <%end%>
+    </div>
+  </div>
+</section>
+
+<div class = "container">
+<div class = "section">
+
+  <%unless @purchases.empty?%>
+    <%= render partial: 'partials/recent_purchases', locals: {purchases: @purchases } unless @purchases.empty? %>
+  <%else%>
+    <%= flash[:notice] = "There are no items in the system at this time"%>
+  <%end%>
+
+
+</div>
+</div>

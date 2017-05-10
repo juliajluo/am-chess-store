@@ -14,11 +14,12 @@
 <div class = "container">
 <div class = "section">
 
+  <%unless @active_items.empty?%>
+    <%= render partial: 'partials/price_table', locals: {item_prices: @active_items } unless @active_items.empty? %>
+  <%else%>
+    <%= flash[:notice] = "There are no items in the system at this time"%>
+    <%end%>
 
-<%= render partial: "partials/index_structure", locals: {model_name: "item_price",
-                                                         primary: "current_item_prices",
-                                                         secondary: nil,
-                                                         sidebar: nil} %>
 
 </div>
 </div>

@@ -26,7 +26,7 @@ class ItemPricesController < ApplicationController
 
       else
         render action: 'new'
-        format.json { render json: @attraction.errors, status: :unprocessable_entity }
+        format.json { render json: @item_price.errors, status: :unprocessable_entity }
       end
     end
   end

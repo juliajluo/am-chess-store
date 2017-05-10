@@ -1,0 +1,14 @@
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+
+<% item_prices.each do |ip| %>
+  <tr>
+    <td><%= link_to ip.name, item_path(ip) %></td>
+    <td><%= ip.current_price.nil? ? 'N/A' : number_to_currency(ip.current_price) %></td>
+  </tr>
+<% end %>
+</table>

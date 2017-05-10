@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @user = User.new
   end
 
   def customers
@@ -20,15 +21,11 @@ class UsersController < ApplicationController
     @managers = User.managers
   end
 
-
-
   def new
     @user = User.new
   end
 
   def edit
-    @user = Band.find(params[:current_user])
-
   end
 
   def create
@@ -42,7 +39,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     if @user.update_attribute(user_params)
       redirect_to(@current_user, :notice => 'User was successfully updated.')
     else

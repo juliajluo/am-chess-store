@@ -20,14 +20,22 @@
     <%= @item.description%>
 </p>
 
-<% unless current_user.nil? || current_user.role == 'customer'%>
-  <p>
-    <b>Inventory Level:</b>
-    <%= @item.inventory_level %>
-  </p>
-<%end%>
 
 <p>
   <b>Color:</b>
   <%= @item.color %>
 </p>
+
+<% unless current_user.nil? || current_user.role == 'customer'%>
+  <p>
+    <b>Inventory Level:</b>
+    <%= @item.inventory_level %>
+  </p>
+
+  <div id = "new_purchase_button">
+    <%= link_to(new_purchase_path(item_id:@item.id), :class => 'button is-primary', remote: true) do  %>
+      New Purchase
+    <% end %>
+  </div>
+
+<%end%>
