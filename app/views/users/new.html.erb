@@ -20,52 +20,45 @@
     <% end %>
 
 
-    <div class = "field">
+    <div class="field is-horizontal">
       <label class="label">First Name</label>
       <p class="control">
         <%= f.text_field :first_name, :hint => "can't be blank", :class => "input" %>
       </p>
-    </div>
-
-    <div class = "field">
       <label class="label">Last Name</label>
       <p class="control">
         <%= f.text_field :last_name, :hint => "can't be blank", :class => "input" %>
       </p>
     </div>
 
-
-      <div class = "field">
+    <div class="field is-horizontal">
         <label class="label">Username</label>
         <p class="control">
           <%= f.text_field :username, :hint => "can't be blank", :class => "input" %>
         </p>
+        <label class="label">Role</label>
+        <p class="control">
+          <span class="select">
+            <%= f.select :role, User::ROLES %>
+          </span>
+        </p>
       </div>
 
-    <div class="field">
-      <label class="label">Role</label>
-      <p class="control">
-        <span class="select">
-          <%= f.select :role, User::ROLES %>
-        </span>
-      </p>
-    </div>
 
-    <div class = "field">
+      <div class="field is-horizontal">
       <label class="label">Email</label>
       <p class="control">
         <%= f.text_field :email,:hint => "can't be blank", :class => "input" %>
       </p>
-    </div>
-
-    <div class = "field">
       <label class="label">Phone</label>
       <p class="control">
         <%= f.text_field :phone, :class => "input" %>
       </p>
     </div>
 
-    <div class = "field">
+
+    <div class="field is-horizontal">
+
       <label class="label">Password</label>
       <p class="control">
         <%= f.text_field :password, :class => "input" %>
@@ -73,7 +66,7 @@
     </div>
 
 
-    <div class = "field">
+    <div class="field is-horizontal">
       <label class="label">Confirm Password</label>
       <p class="control">
         <%= f.text_field :password_confirmation, :class => "input" %>

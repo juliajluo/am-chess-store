@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :orders
+  resources :schools
   # resources :cart
 
   #cart methods

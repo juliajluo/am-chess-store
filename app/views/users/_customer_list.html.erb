@@ -6,7 +6,6 @@
             <tr>
               <th width="250">Name</th>
               <th width="125">Email</th>
-              <th width="125"></th>
 
             </tr>
           </thead>
@@ -15,7 +14,6 @@
               <tr>
                 <td><%= c.first_name %> <%= c.last_name %></td>
                 <td><%= c.email %></td>
-                <td><%= link_to "View", user_path(c), :class => "button is-light"%></td>
 
               </tr>
             <% end %>

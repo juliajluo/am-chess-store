@@ -1,22 +1,30 @@
-<h3>Log In</h3>
+<div class = "container">
+	<div class = "section">
 
-<%= form_tag sessions_path do %>
 
-	<div class="control-group">
-    <%= label_tag :username %>
-    <div class="controls">
-      <%= text_field_tag :username, params[:username] %>
-    </div>
-  </div>
+		<h3>Log In</h3>
 
-	<div class="control-group">
-    <%= label_tag :password %>
-    <div class="controls">
-      <%= password_field_tag :password %>
-    </div>
-  </div>
+		<%= form_tag sessions_path do %>
 
-  <div class="actions"><%= submit_tag "Log In" %></div>
-	<div class="actions"><%= link_to "Sign Up", new_user_path %></div>
+			<div class="control-group">
+		    <%= label_tag :username %>
+		    <div class="controls">
+		      <%= text_field_tag :username, params[:username] %>
+		    </div>
+		  </div>
 
-<% end %>
+			<div class="control-group">
+		    <%= label_tag :password %>
+		    <div class="controls">
+		      <%= password_field_tag :password %>
+		    </div>
+		  </div>
+			<br />
+		  <div class="actions"><%= submit_tag "Log In", :class => "button is-primary" %></div>
+			<div class="actions"><%= link_to "Sign Up", new_user_path, :class => "button is-link"%></div>
+
+
+		<% end %>
+
+	</div>
+</div>

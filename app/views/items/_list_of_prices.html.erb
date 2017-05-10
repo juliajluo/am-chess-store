@@ -9,7 +9,7 @@
     <% @price_history.each do |ph| %>
 
       <tr>
-        <td><%= ph.price %></td>
+        <td><%= number_to_currency(ph.price) %></td>
 
         <td> <%= ph.category%></td>
 

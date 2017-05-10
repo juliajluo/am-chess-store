@@ -18,6 +18,14 @@
     <%= render :partial => "partials/nav" %>
 
     <div class="content">
+      <% flash.each do |name, msg| %>
+        <div class = "success">
+          <div class="notification is-success">
+            <button class="delete"></button>
+            <%= content_tag :div, msg, id: "flash_#{name}" %>
+          </div>
+        </div>
+      <% end %>
       <!-- <div class="small-12 columns" id="main_content"> -->
       <%= yield %>
 

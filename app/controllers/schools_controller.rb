@@ -1,26 +1,24 @@
 class SchoolsController < ApplicationController
-  # def index
-  #   @active_items = Item.active.alphabetical.to_a
-  # end
+  def index
+    @schools = School.alphabetical.to_a
+  end
   #
-  # def new
-  #   @item_price = ItemPrice.new
-  # end
+  def new
+    @schools = School.new
+  end
   #
-  # def create
-  #   @item_price = ItemPrice.new(item_price_params)
-  #   @item_price.start_date = Date.current
-  #   if @item_price.save
-  #     @item = @item_price.item
-  #     redirect_to item_path(@item), notice: "Changed the price of #{@item.name}."
-  #   else
-  #     render action: 'new'
-  #   end
-  # end
-  #
-  # private
-  # def item_price_params
-  #   params.require(:item_price).permit(:item_id, :price, :category)
-  # end
+  def create
+    @schools = School.new(school_params)
+    if @schools.save
+      redirect_to edit_user_path(current_user), notice: "Created #{@school.name}"
+    else
+      render action: 'new'
+    end
+  end
+
+  private
+  def school_params
+    params.require(:school).permit(:name, :street_1, :street_2,:city, :state, :zip, :min_grade, :max_grade)
+  end
 
 end

@@ -13,7 +13,11 @@
       <figure class ='image'>
         <% unless @item.photo_url.nil? %>
         <p><%= image_tag @item.photo_url%></p>
-        <% end %>
+        <% else %>
+        <figure class ='image'>
+          <%= image_tag 'comingsoon.png', :class =>'image' %>
+        </figure>
+        <% end%>
       </figure>
     </div>
 
@@ -27,8 +31,9 @@
               <%= link_to 'Edit', edit_item_path(@item), :class => 'button is-light' %>
               <%= link_to 'Destroy', @item, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger'  %>
         <%end%>
-              <%= link_to 'Add to Cart', add_to_cart_path, :class => 'button is-info'  %>
-
+        <% if logged_in?%>
+              <%= link_to 'Add to Cart', add_to_cart_path, :class => 'button is-light'  %>
+        <%end%>
 
 
         <br />
@@ -58,7 +63,13 @@
           <div class="card">
             <div class = "card-image">
               <figure class ='image'>
-                <%= image_tag si.photo_url%>
+                <% unless si.photo_url.nil? %>
+                <p><%= image_tag si.photo_url%></p>
+                <% else %>
+                <figure class ='image'>
+                  <%= image_tag 'comingsoon.png', :class =>'image' %>
+                </figure>
+                <% end%>
               </figure>
             </div>
             <div class="card-content">

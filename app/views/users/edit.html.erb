@@ -6,16 +6,13 @@
 
       <div class = "column is-6">
 
-        <div class="tabs is-small">
-            <ul>
-              <li class = "is-active"><a>Unshipped Orders</a></li>
-              <li><a>Past Orders</a></a></li>
-            </ul>
-          </div>
+          <%if current_user.role == "customer"%>
+            <%= render 'users_orders'%>
+            <%= render 'past_orders'%>
 
-          <%= render 'users_orders'%>
-
-
+          <%end%>
+          <br />
+          <%= link_to "Add School", new_school_path, :class => "button is-primary"%>
 
       </div>
       <div class = "column is-6">

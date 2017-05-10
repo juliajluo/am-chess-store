@@ -1,12 +1,12 @@
 <div class="tabs is-small">
 
 <ul>
-  <li class = "is-active"><a>Unshipped Orders</a></li>
-  <li><a>Past Orders</a></a></li>
+  <li><a>Unshipped Orders</a></li>
+  <li class = "is-active"><a>Past Orders</a></a></li>
 </ul>
 </div>
 
-<% current_user.orders.not_shipped.each do |o|%>
+<% current_user.orders.paid.each do |o|%>
   <div class = "card">
     <header class= "card-header">
       <p class="card-header-title">

@@ -1,5 +1,7 @@
-
-<div class = "section">
+<div class = "container">
+  <div class = "section">
+    <h3 class = "title">New Item</h3>
+      <div class = "box">
 
 <%= simple_form_for @item, :html => { :multipart => true, :class => 'form-horizontal'} do |f| %>
 
@@ -19,63 +21,62 @@
     </article>
   <% end %>
 
-
-  <div class = "field">
+  <div class="field is-horizontal">
+  <!-- <div class = "field"> -->
     <label class="label">Name</label>
-    <p class="control">
-      <%= f.text_field :name, :hint => "can't be blank", :class => "input" %>
-    </p>
-  </div>
-
-  <div class = "field">
-    <label class="label">Description</label>
-    <p class="control">
-      <%= f.text_area :description, :class => "input" %>
-    </p>
-  </div>
-
-  <div class="field">
+    <div class="control">
+      <%= f.text_field :name, :hint => "cn't be blank", :class => "input" %>
+    </div>
     <label class="label">Category</label>
     <p class="control">
       <span class="select">
         <%= f.select :category , Item::CATEGORIES %>
       </span>
     </p>
+  <!-- </div> -->
   </div>
 
-  <div class = "field">
+  <div class="field is-horizontal">
+    <label class="label">Description</label>
+    <p class="control">
+      <%= f.text_area :description, :class => "input" %>
+    </p>
+  </div>
+
+  <div class="field is-horizontal">
     <label class="label">Color</label>
     <p class="control">
       <%= f.text_field :color, :class => "input" %>
     </p>
+
   </div>
 
-  <div class = "field">
+  <div class="field is-horizontal">
     <label class="label">Weight</label>
     <p class="control">
       <%= f.text_field :weight, :class => "input" %>
     </p>
   </div>
 
-  <div class = "field">
+  <div class="field is-horizontal">
     <label class="label">Inventory level</label>
     <p class="control">
       <%= f.text_field :inventory_level, :class => "input" %>
     </p>
-  </div>
-
-  <div class = "field">
     <label class="label">Reorder Level</label>
     <p class="control">
       <%= f.text_field :reorder_level, :class => "input" %>
     </p>
   </div>
 
+
+
+  <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
   <div class = "field">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
-
+  <%end%>
   <div class="actions">
     <%= f.submit class: 'button is-primary'%>
     <%= link_to 'Cancel', items_path, :class => 'button is-link' %>
@@ -83,5 +84,6 @@
 
 
 <% end %>
-
+</div>
+</div>
 </div>

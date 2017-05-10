@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(){
+
+  $('.nav-toggle').click(function(){
+    $('.nav-toggle').toggleClass('is-active');
+    $('.nav-menu').toggleClass('is-active');
+  });
+
+  $('.delete').click( function(){
+    $('.delete').parent().parent().remove();
+  });
+});
