@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.alphabetical.to_a
+    @schools = School.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
   #
   def new

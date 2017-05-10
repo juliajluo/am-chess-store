@@ -45,7 +45,7 @@ class Ability
       end
 
       #can read info related to orders that need to be shipped
-      # can :index, Order, Order.unshipped
+      can :index, Order
 
       #can read info about items, but not price history
       can :read, Item do |this_item|
@@ -74,13 +74,13 @@ class Ability
 
 
     else
-      # can :show, Item
+      can :show, Item
       # #not inventory level and price history
-      # can :create, User
+      can :create, User
       #
-      # can :index, Item
-      # can :create, School
-      can :manage, :all
+      can :index, Item
+      can :create, School
+      # can :manage, :all
 
 
 

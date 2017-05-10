@@ -15,9 +15,9 @@
       <%= link_to "Items", items_path, :class => 'nav-item' %>
 
       <% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+        <%= link_to "Schools", schools_path, :class => 'nav-item' %>
         <%= link_to "Purchases", purchases_path, :class => 'nav-item' %>
         <%= link_to "Prices", item_prices_path, :class => 'nav-item' %>
-        <%= link_to "Schools", schools_path, :class => 'nav-item' %>
 
       <%end%>
 

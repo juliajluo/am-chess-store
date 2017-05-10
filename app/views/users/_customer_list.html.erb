@@ -12,7 +12,7 @@
           <tbody>
             <% @customers.each do |c| %>
               <tr>
-                <td><%= c.first_name %> <%= c.last_name %></td>
+                <td><%= link_to c.proper_name, user_path(c) %> </td>
                 <td><%= c.email %></td>
 
               </tr>
@@ -20,5 +20,5 @@
           </tbody>
         </table>
       <% else %>
-        <p>There are no items that need to be reorder at this time.</p>
+        <p>There are no customers at this time.</p>
       <% end %>

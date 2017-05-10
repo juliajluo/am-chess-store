@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   include ChessStoreHelpers::Cart
 
   def index
     @users = User.all
+    @customers = User.customers
+    @employees = User.employees
+
   end
 
   def show
-    # @user = User.new
+    @active_user = @user.active
   end
 
   def customers

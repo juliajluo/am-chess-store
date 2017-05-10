@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @items_to_reorder = Item.need_reorder.alphabetical.to_a
     @unshipped_orders = Order.not_shipped
     # @unshipped_items= OrderItem.unshipped
+    @users = User.active.all
   end
 
 

@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   include ChessStoreHelpers::Cart
   helper_method :logged_in?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Oops! You are not allowed to access this page."
+    redirect_to home_path
+  end
+
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

@@ -1,4 +1,8 @@
 
+<%if @users.empty?%>
+  <%= render :partial => 'general_home' %>
+<%end%>
+
 <%if current_user.nil?%>
   <%= render :partial => 'general_home' %>
 <%end%>

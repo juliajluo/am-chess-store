@@ -20,7 +20,9 @@
     <%= flash[:notice] = "There are no items in the system at this time"%>
   <%end%>
 
-
+<span class = "smtext">
+<%= will_paginate @active_items, previous_label: "Previous", next_label: "Next"%>
+</span>
 
 </div>
 </div>
