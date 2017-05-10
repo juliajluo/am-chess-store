@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   # use has_secure_password
   has_secure_password
- 
+
   # Relationships
   has_many :orders
 
@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   scope :inactive,      -> { where(active: false) }
   scope :employees,     -> { where.not(role: 'customer') }
   scope :customers,     -> { where(role: 'customer') }
+  scope :shippers,     -> { where(role: 'shipper') }
+  scope :managers,     -> { where(role: 'manager') }
+
 
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false}

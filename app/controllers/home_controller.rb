@@ -5,10 +5,12 @@ class HomeController < ApplicationController
     # @unshipped_items= OrderItem.unshipped
   end
 
-  def about
-    @unshipped_orders = Order.not_shipped
 
+
+  def about
   end
+
+
 
   def contact
   end

@@ -1,0 +1,26 @@
+<h2 class = "title">Shippers</h2>
+
+<% unless @shippers.nil? || @shippers.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Name</th>
+        <th width="125">Email</th>
+        <th width="125"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @shippers.each do |c| %>
+        <tr>
+          <td><%= c.first_name %> <%= c.last_name %></td>
+          <td><%= c.email %></td>
+          <td><%= link_to "View", user_path(c), :class => "button is-light"%></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no items that need to be reorder at this time.</p>
+<% end %>

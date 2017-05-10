@@ -8,6 +8,14 @@
 <%end%>
 
 <%if logged_in? && current_user.role == "shipper"%>
-<%= render 'shipper_home'%>
+  <%= render 'shipper_home'%>
 <%end%>
-<!-- <%= render :partial => 'reorder_list' %> -->
+
+<%if logged_in? && current_user.role == "admin" %>
+  <%= render 'admin_home'%>
+<%end%>
+
+
+<%if logged_in? && current_user.role == "manager" %>
+  <%= render 'admin_home'%>
+<%end%>

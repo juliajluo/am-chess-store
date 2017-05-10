@@ -1,0 +1,50 @@
+<div id = "shipping_table">
+
+    <h2 class = "title">Orders to be shipped</h2>
+    <% @unshipped_orders.each do |order| %>
+
+      <div class = "card">
+        <header class = "card-header">
+          <p class="card-header-title">
+            Order ID:<%= order.id%> &nbsp;&nbsp;&nbsp; <%= order.school.name%>
+          </p>
+        </header>
+        <div class = "card-content">
+
+          <table class = "table">
+            <th>
+              Shipped?
+            </th>
+            <th>
+              Item
+            </th>
+            <th>
+              Quantity
+            </th>
+
+          <% order.order_items.each do |oi| %>
+            <% if oi.shipped_on.nil? %>
+            <tr>
+              <td><div class = "shipping_table_button">
+                <%= link_to(ship_path(order_id: oi.id), :class => 'button is-light', remote: true) do  %>
+                  Unshipped
+                <% end %>
+
+              </td>
+              </div>
+              <td>
+                <%=oi.item.name%>
+              </td>
+              <td>
+                <%=oi.quantity%>
+              </td>
+            </tr>
+            <% end %>
+          <%end%>
+          </table>
+
+        </div>
+      </div>
+
+    <% end %>
+</div>

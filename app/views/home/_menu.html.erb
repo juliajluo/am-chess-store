@@ -1,0 +1,33 @@
+
+<aside class="menu">
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to "To Reorder", home_path %></a></li>
+
+    <% if logged_in? && current_user.role == "admin"%>
+      <li>  <%= link_to(shipping_path, remote: true) do  %>
+                To Ship
+              <% end %>
+      </li>
+    <%end%>
+
+  </ul>
+  <p class="menu-label">
+    Employees
+  </p>
+  <ul class="menu-list">
+    <li>    <%= link_to(customers_path, remote: true) do%>
+              Customers
+            <% end %>
+    </li>
+    <li><%= link_to(shippers_path, remote: true) do%>
+              Shippers
+            <% end %></li>
+    <li><%= link_to(managers_path, remote: true) do%>
+              Managers
+            <% end %></li>
+  </ul>
+
+</aside>

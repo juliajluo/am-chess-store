@@ -26,9 +26,12 @@
 
         <br>
               <%= link_to 'Edit', edit_item_path(@item), :class => 'button is-light' %>
+
+
               <%= link_to 'View All', items_path, :class => 'button is-light'  %>
               <%= link_to 'Destroy', @item, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger'  %>
               <%= link_to 'Add to Cart', add_to_cart_path, :class => 'button is-light'  %>
+
 
 
         <br />
@@ -37,6 +40,13 @@
       </div>
     </div>
   </div>
+</div>
+<div class = "box">
+
+<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
+  <%= render 'price_history_and_purchase'%>
+<%end%>
+
 </div>
 
 <section class = "hero is-medium is-light">
@@ -63,7 +73,3 @@
   </div>
 </div>
 </section>
-
-<% if logged_in? && (current_user.role == "admin" || current_user.role == "manager")%>
-  <%= render 'price_history_and_purchase'%>
-<%end%>

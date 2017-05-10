@@ -8,6 +8,20 @@ class UsersController < ApplicationController
   def show
   end
 
+  def customers
+    @customers = User.customers
+  end
+
+  def shippers
+    @shippers = User.shippers
+  end
+
+  def managers
+    @managers = User.managers
+  end
+
+
+
   def new
     @user = User.new
   end

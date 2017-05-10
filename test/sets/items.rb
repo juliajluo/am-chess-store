@@ -31,8 +31,7 @@ module Contexts
         name: "Mahogany Wood Chess Board",
         description: "This attractive and affordable chess board features a classic 1-1/2 inch mahogany border. The squares are 2-1/8 inch and the board is 1/2 inch thick. It is made in Poland of quality manufacturing with alternating Mahogany squares.",
         color: "brown/tan",
-        weight: 2.1
-        image: url('pieces.jpg'))
+        weight: 2.1)
 
       @maple_board    = FactoryGirl.create(:item,
         name: "Maple Wood Chess Board",
