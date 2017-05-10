@@ -1,47 +1,19 @@
 <div class = "container">
   <div class = "section">
+    <p class = "title is-3">Welcome Back <%= current_user.first_name%> </p>
+
     <div class = "columns">
+
       <div class = "column is-6">
-        <p class = "title is-3">Welcome Back <%= current_user.first_name%> </p>
 
-        <p class = "subtitle is-5">
-          Unshipped Orders
-        </p>
-
-        <% current_user.orders.each do |o|%>
-          <div class = "card">
-            <header class= "card-header">
-              <p class="card-header-title">
-              Order ID: <%=o.id%> &nbsp;&nbsp;&nbsp; <%= o.school.name%></p>
-            </header>
-            <div class = "card-content">
-              <table class = "table">
-                <th>
-                  Item
-                </th>
-                <th>
-                  Quantity
-                </th>
-                <th>
-                  <%= link_to 'Cancel', o, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger' %>
-                </th>
-                <% o.order_items.each do |oi| %>
-                <tr>
-                  <td>
-                    <%= oi.item.name%>
-                  </td>
-                  <td>
-                    <%=oi.quantity%>
-                  </td>
-                  <td>
-                  </td>
-                </tr>
-                <%end%>
-              </table>
-            </div>
+        <div class="tabs is-small">
+            <ul>
+              <li class = "is-active"><a>Unshipped Orders</a></li>
+              <li><a>Past Orders</a></a></li>
+            </ul>
           </div>
-        <%end%>
 
+          <%= render 'users_orders'%>
 
 
 

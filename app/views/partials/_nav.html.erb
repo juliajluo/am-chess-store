@@ -21,8 +21,7 @@
 
        <% if logged_in? %>
          <%= link_to 'Logout', logout_path, :class =>'nav-item' %>
-
-         <%= link_to user_path(current_user), :class=>'nav-item' do %>
+         <%= link_to edit_user_path(current_user), :class=>'nav-item' do %>
             <i class="fa fa-user-circle nav-item" aria-hidden="true"></i>
          <% end %>
        <% else %>

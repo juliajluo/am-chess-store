@@ -1,0 +1,47 @@
+<div class = "container">
+  <div class = "section">
+    <p class = "title is-3">
+      Your order has been received!
+    </p>
+
+
+      <div class = "card">
+        <header class = "card-header">
+          <p class="card-header-title">
+            Order ID:<%= @order.id%> &nbsp;&nbsp;&nbsp; <%= @order.school.name%>
+          </p>
+        </header>
+        <div class = "card-content">
+          <table class = "table" id = "shipping_table">
+            <th>
+              Item
+            </th>
+            <th>
+              Quantity
+            </th>
+            <th>
+              Price
+            </th>
+
+          <% @order.order_items.each do |oi| %>
+            <tr>
+              <td>
+                <%=oi.item.name%>
+              </td>
+              <td>
+                <%=oi.quantity%>
+              </td>
+              <td>
+                <%=number_to_currency(oi.item.current_price)%>
+              </td>
+            </tr>
+          <%end%>
+          </table>
+          <%= link_to 'Cancel Order', @order, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger' %>
+
+        </div>
+      </div>
+
+
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<% current_user.orders.each do |o|%>
+<% current_user.orders.not_shipped.each do |o|%>
   <div class = "card">
     <header class= "card-header">
       <p class="card-header-title">
@@ -13,66 +13,21 @@
           Quantity
         </th>
         <th>
-
+          <%= link_to 'Delete', o, confirm: 'Are you sure?', method: :delete, :class => 'button is-danger' %>
         </th>
         <% o.order_items.each do |oi| %>
         <tr>
           <td>
-            oi.item.name
+            <%= oi.item.name%>
           </td>
           <td>
-            oi.quantity
+            <%=oi.quantity%>
           </td>
           <td>
-
           </td>
         </tr>
+        <%end%>
       </table>
     </div>
   </div>
 <%end%>
-
-
-
-<!-- <div class = "card">
-  <header class = "card-header">
-    <p class="card-header-title">
-      Order ID:<%= current_user.orders.id%> &nbsp;&nbsp;&nbsp; <%= order.school.name%>
-    </p>
-  </header>
-  <div class = "card-content">
-    <table class = "table" id = "shipping_table">
-      <th>Item
-      </th>
-      <th>
-        Quantity
-      </th>
-      <th>
-        Price
-      </th>
-      <th>
-
-      </th>
-
-    <% order.order_items.each do |oi| %>
-      <tr>
-        <td>
-
-        </td>
-        <td>
-
-        </td>
-
-        <td>
-          <%=oi.item.name%>
-        </td>
-        <td>
-          <%= link_to(ship_path, :class => 'button is-light', remote: true) do  %>
-            Unshipped
-          <% end %>
-        </td>
-      </tr>
-    <%end%>
-    </table>
-  </div>
-</div> -->

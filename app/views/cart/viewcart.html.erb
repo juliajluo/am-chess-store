@@ -18,10 +18,13 @@
     <tr>
       <td><%= oi.item.name%></td>
       <td>
-        price
+        <%=number_to_currency(oi.item.current_price)%>
+
       </td>
       <td><%= oi.quantity%></td>
+
       <td><%= link_to 'Remove', remove_item_path(oi.item_id), :class => 'button is-danger'%></td>
+
     </tr>
   <% end %>
   </table>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'remove_item/:id' => 'cart#remove_item', as: :remove_item
   get 'clear' => 'cart#clear', as: :clear
   get 'checkout' => 'cart#checkout', as: :checkout
+  get 'ordermade' => 'orders#ordermade', as: :ordermade
 
   get 'customers' => 'users#customers', as: :customers #this creates customers_path
   get 'managers' => 'users#managers', as: :managers #this creates customers_path
