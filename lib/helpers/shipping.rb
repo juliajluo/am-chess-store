@@ -16,10 +16,11 @@ module ChessStoreHelpers
       cost = base + increment
     end
 
+
     def calculate_shipping_increase(total_weight, allowed=3, charge=0.25)
       return 0 if total_weight <= allowed
       extra = (total_weight - allowed).to_i
       increment = extra * charge
-    end  
+    end
   end
 end
